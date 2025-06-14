@@ -2,37 +2,25 @@
 #include <vector>
 #include <algorithm>
 using namespace std;
-// one way is to first left rotate by 1 then make a loop for d elements(MOST NAIVE)
-// void leftRotateOne(vector<int> &arr)
-// {
-//   int temp = arr[0];
-//   for (int i = 1; i < arr.size(); i++)
-//   {
-//     arr[i - 1] = arr[i];
-//   }
-//   arr[arr.size() - 1] = temp;
-// }
-// void leftRotateByD(vector<int> &arr, int d)
-// {
-//   for (int i = 0; i < d; i++)
-//     leftRotateOne(arr);
-// }
+// recursive solution
 
-// extra space wala solution
-void leftRotateByD(vector<int> &arr, int d)
+void reversed(vector<int> &v, int left, int right)
 {
-  vector<int> af(d);
-  for (int i = 0; i < d; i++)
-    af[i] = arr[i];
-  for (int i = d; i < arr.size(); i++)
+  while (left < right)
   {
-    swap(arr[i - d], arr[i]);
-  }
-  for (int i = arr.size() - d; i < arr.size(); i++)
-  {
-    arr[i] = af[i - arr.size() + d];
+    swap(v[left], v[right]);
+    left++;
+    right--;
   }
 }
+
+void leftRotateByD(vector<int> &v, int n, int d)
+{
+  reversed(v, 0, d - 1);
+  reversed(v, d, n - 1);
+  reversed(v, 0, n - 1);
+}
+
 int main()
 {
   int n, d;
@@ -40,7 +28,8 @@ int main()
   vector<int> arr(n);
   for (int i = 0; i < n; i++)
     cin >> arr[i];
-  leftRotateByD(arr, d);
+  d = d % n;
+  leftRotateByD(arr, n, d);
   for (int i = 0; i < n; i++)
     cout << arr[i] << " ";
   cout << endl;

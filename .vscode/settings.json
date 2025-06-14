@@ -1,5 +1,6 @@
 {
   "files.associations": {
+    "*.embeddedhtml": "html",
     "ostream": "cpp",
     "iostream": "cpp",
     "array": "cpp",
@@ -65,6 +66,7 @@
     "xmemory": "cpp",
     "xtr1common": "cpp",
     "xtree": "cpp",
-    "xutility": "cpp"
+    "xutility": "cpp",
+    "bitset": "cpp"
   }
 }

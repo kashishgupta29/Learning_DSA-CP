@@ -4,8 +4,22 @@
 using namespace std;
 vector<int> MergeArr(vector<int> &arr1, vector<int> &arr2)
 {
-  vector<int> res(arr1.size()+arr2.size());
-  while ()
+  int i = 0, j = 0;
+  vector<int> res;
+  while (i < arr1.size() && j < arr2.size())
+  {
+    if (arr1[i] < arr2[j])
+    {
+      res.push_back(arr1[i]);
+      i++;
+    }
+    else
+    {
+      res.push_back(arr2[j]);
+      j++;
+    }
+  }
+  return res;
 }
 int main()
 {
@@ -17,5 +31,8 @@ int main()
   cin >> m;
   for (int i = 0; i < m; i++)
     cin >> arr2[i];
-  vector<int> res = MergeArr(arr1, arr2);
+  vector<int> v = MergeArr(arr1, arr2);
+  for (auto c : v)
+    cout << c << " ";
+  cout << endl;
 }

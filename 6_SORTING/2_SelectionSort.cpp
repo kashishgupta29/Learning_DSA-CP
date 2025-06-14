@@ -5,27 +5,9 @@
 #include <limits.h>
 using namespace std;
 
-// with extra space
-// void SelectionSort(vector<int> &arr)
-// {
-//   vector<int> temp(arr.size());
-//   for (int i = 0; i < arr.size(); i++)
-//   {
-//     int mid_ind = 0;
-//     for (int j = 0; j < arr.size(); j++)
-//     {
-//       if (arr[j] < arr[mid_ind])
-//         mid_ind = j;
-//     }
-//     temp[i] = arr[mid_ind];
-//     arr[mid_ind] = INT_MAX;
-//   }
-//   arr = temp;
-// }
-
 // in place sorting
 void SelectionSort(vector<int> &arr)
-{
+{ 
   for (int i = 0; i < arr.size(); i++)
   {
     int mid_ind = i;
