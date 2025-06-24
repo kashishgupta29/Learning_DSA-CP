@@ -3,7 +3,17 @@
 using namespace std;
 
 // Optimized approach
-
+int Maxm_Subarr_sum(vector<int> &vec)
+{
+  int maxm = vec[0];
+  int curr = vec[0];
+  for (int i = 1; i < vec.size(); i++)
+  {
+    curr = max(vec[i], vec[i] + curr);
+    maxm = max(curr, maxm);
+  }
+  return maxm;
+}
 
 // Naive Solution
 // int Maxm_Subarr_sum(vector<int> &vec)
