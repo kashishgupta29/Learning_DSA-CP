@@ -3,6 +3,35 @@
 #include <math.h>
 using namespace std;
 
+// optimized approach (make two funcs 1) kandane and 2nd -ve ke liye kandane usse min pta chal jaega toh minus kr denge for maxm;
+int Normal_kandane(vector<int> &arr)
+{
+  int curr = arr[0];
+  int maxm = arr[0];
+  for (int i = 1; i < arr.size(); i++)
+  {
+    curr = max(curr, curr + arr[i]);
+    maxm = max(maxm, curr);
+  }
+  return maxm;
+}
+
+int circular_sum(vector<int> &arr)
+{
+  int normal_Sum = Normal_kandane(arr);
+  if (normal_Sum < 0)
+    return normal_Sum;
+  int sum = 0;
+  for (int i = 0; i < arr.size(); i++)
+  {
+    sum += arr[i];
+    arr[i] = -arr[i];
+  }
+  int maxm_circluar = sum + Normal_kandane(arr);
+  return maxm(normal_Sum, maxm_circluar);
+}
+
+// Naive Solution
 int circular_sum(vector<int> &arr)
 {
   int maxm = arr[0];
